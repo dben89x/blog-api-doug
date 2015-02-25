@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
   def index
+    if params[:search]
+      @posts = Post.where('title like ? OR body like ?')
+
+    end
     render json: Post.all
   end
 
